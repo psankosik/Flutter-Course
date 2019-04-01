@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
-import 'product_manager.dart';
-//#5 commit modify product 
+import './Page/home__page.dart';
+//import 'product_manager.dart';
+
+//#5 commit
 
 void main() => runApp(MyApp());
 
@@ -10,11 +12,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       theme: ThemeData(
           primarySwatch: Colors.deepOrange, accentColor: Colors.deepPurple),
-      home: Scaffold(
-          appBar: AppBar(
-            title: Text('EasyList'),
-          ),
-          body: ProductManager()),
+      home: HomePage()
     );
   }
 }

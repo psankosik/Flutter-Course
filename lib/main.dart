@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import './Page/home__page.dart';
 //import 'product_manager.dart';
 
-//#5 commit
+//#6 commit:
 
 void main() => runApp(MyApp());
 

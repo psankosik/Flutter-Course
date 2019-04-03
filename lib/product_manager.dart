@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import './products.dart';
 import './product_control.dart';
 
@@ -42,6 +41,12 @@ class _ProductManagerState extends State<ProductManager> {
     print(_products);
   }
 
+  void _deleteProduct(int index){
+    setState(() {
+      _products.removeAt(index);
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     print('[ProductManager State] build()');
@@ -51,7 +56,7 @@ class _ProductManagerState extends State<ProductManager> {
           margin: EdgeInsets.all(10.0),
           child: ProductControl(_addProduct),
         ),
-        Expanded(child: Products(_products))
+        Expanded(child: Products(_products, deleteProduct: _deleteProduct))
       ],
     );
   }

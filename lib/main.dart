@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
-// import 'package:flutter/rendering.dart';
-
 import './Page/home__page.dart';
 
-void main() {
-  // debugPaintSizeEnabled = true;
-  // debugPaintBaselinesEnabled = true;
-  // debugPaintPointersEnabled = true;
-  runApp(MyApp());
-}
+//#9 commit: Add delete button 
+
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // debugShowMaterialGrid: true,
       theme: ThemeData(
           brightness: Brightness.light,
           primarySwatch: Colors.deepOrange,

@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import './Page/home__page.dart';
+import './Page/products.dart';
+import './Page/auth.dart';
 
-//#9 commit: Add delete button 
+//#9 commit:
 
 void main() => runApp(MyApp());
 
@@ -13,7 +14,7 @@ class MyApp extends StatelessWidget {
           brightness: Brightness.light,
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.deepPurple),
-      home: HomePage(),
+      home: AuthPage(),
     );
   }
 }

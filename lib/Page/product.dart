@@ -9,7 +9,7 @@ class ProductPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return WillPopScope(
+    return WillPopScope( //for delete that product
       onWillPop: () {
         print('Back button pressed');
         Navigator.pop(context,false);

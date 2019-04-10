@@ -7,7 +7,7 @@ import './Page/products.dart';
 import './Page/product.dart';
 import './product_manager.dart';
 
-//#12 commit:
+//#13 commit:
 
 void main() => runApp(MyApp());
 
@@ -54,13 +54,21 @@ class _MyAppState extends State<MyApp> {
         if (pathElements[0] != '') {
           return null;
         }
-        if (pathElements[1] == 'product') {
+        if (pathElements[1] == 'product') { //wtf
           final int index = int.parse(pathElements[2]);
-          return MaterialPageRoute<bool>( //create material route and return boo
+          return MaterialPageRoute<bool>(
+            //create material route and return boo
             builder: (BuildContext context) => ProductPage(
                 _products[index]['title'], _products[index]['image']),
           );
         }
+      },
+      onUnknownRoute: (RouteSettings settings) {
+        //when user go to unexist screen
+        return MaterialPageRoute(
+          builder: (BuildContext context) =>
+              ProductsPage(_products, _addProduct, _deleteProduct),
+        );
       },
     );
   }

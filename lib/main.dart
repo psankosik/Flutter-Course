@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
+// import 'package:flutter/rendering.dart';
 
-import './Page/products.dart';
 import './Page/auth.dart';
-import './Page/product_admin.dart';
+import './Page/products_admin.dart';
 import './Page/products.dart';
 import './Page/product.dart';
-import './product_manager.dart';
 
-//#13 commit:
-
-void main() => runApp(MyApp());
+void main() {
+  // debugPaintSizeEnabled = true;
+  // debugPaintBaselinesEnabled = true;
+  // debugPaintPointersEnabled = true;
+  runApp(MyApp());
+}
 
 class MyApp extends StatefulWidget {
   @override
   State<StatefulWidget> createState() {
-    // TODO: implement createState
     return _MyAppState();
   }
 }
 
 class _MyAppState extends State<MyApp> {
-  List<Map<String, String>> _products = [];
+  List<Map<String, dynamic>> _products = [];
 
-  void _addProduct(Map<String, String> product) {
+  void _addProduct(Map<String, dynamic> product) {
     setState(() {
       _products.add(product);
     });
@@ -38,37 +39,34 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      // debugShowMaterialGrid: true,
       theme: ThemeData(
           brightness: Brightness.light,
           primarySwatch: Colors.deepOrange,
           accentColor: Colors.deepPurple),
       // home: AuthPage(),
       routes: {
-        '/': (BuildContext context) =>
-            ProductsPage(_products, _addProduct, _deleteProduct),
-        '/admin': (BuildContext context) => ProductAdminPage(),
+        '/': (BuildContext context) => ProductsPage(_products),
+        '/admin': (BuildContext context) =>
+            ProductsAdminPage(_addProduct, _deleteProduct),
       },
       onGenerateRoute: (RouteSettings settings) {
-        //navigate to a name route with function and return a route
         final List<String> pathElements = settings.name.split('/');
         if (pathElements[0] != '') {
           return null;
         }
-        if (pathElements[1] == 'product') { //wtf
+        if (pathElements[1] == 'product') {
           final int index = int.parse(pathElements[2]);
           return MaterialPageRoute<bool>(
-            //create material route and return boo
             builder: (BuildContext context) => ProductPage(
                 _products[index]['title'], _products[index]['image']),
           );
         }
+        return null;
       },
       onUnknownRoute: (RouteSettings settings) {
-        //when user go to unexist screen
         return MaterialPageRoute(
-          builder: (BuildContext context) =>
-              ProductsPage(_products, _addProduct, _deleteProduct),
-        );
+            builder: (BuildContext context) => ProductsPage(_products));
       },
     );
   }

@@ -98,7 +98,7 @@ class _AuthPageViewState extends State<AuthPageView> {
                   height: 10.0,
                 ),
                 FlatButton(
-                    color: Theme.of(context).primaryColor,
+                    //color: Theme.of(context).primaryColor,
                     textColor: Colors.white,
                     child: Text('LOGIN'),
                     onPressed: _submitForm)

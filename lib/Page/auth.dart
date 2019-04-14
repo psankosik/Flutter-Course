@@ -24,13 +24,20 @@ class _AuthPageViewState extends State<AuthPageView> {
   String email;
   String password;
   bool acceptTerms = false;
+
   @override
   Widget build(BuildContext context) {
     return Container(
+        decoration: BoxDecoration(
+            image: DecorationImage(
+                fit: BoxFit.cover,
+                colorFilter: ColorFilter.mode(
+                    Colors.black.withOpacity(0.5), BlendMode.dstATop),
+                image: AssetImage('assets/background.jpg'))),
         padding: EdgeInsets.all(10),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
+        child: Center(
+            child: SingleChildScrollView(
+                child: Column(
           children: <Widget>[
             TextField(
               onChanged: (value) {
@@ -39,7 +46,11 @@ class _AuthPageViewState extends State<AuthPageView> {
                 });
               },
               keyboardType: TextInputType.emailAddress,
-              decoration: InputDecoration(labelText: 'E-mail'),
+              decoration: InputDecoration(
+                  labelText: 'E-Mail', filled: true, fillColor: Colors.white54),
+            ),
+            SizedBox(
+              height: 10,
             ),
             TextField(
                 onChanged: (value) {
@@ -49,8 +60,9 @@ class _AuthPageViewState extends State<AuthPageView> {
                 },
                 obscureText: true,
                 decoration: InputDecoration(
-                  labelText: 'Password',
-                )),
+                    labelText: 'Password',
+                    filled: true,
+                    fillColor: Colors.white54)),
             SwitchListTile(
               value: acceptTerms,
               onChanged: (bool value) {
@@ -73,6 +85,6 @@ class _AuthPageViewState extends State<AuthPageView> {
               },
             ),
           ],
-        ));
+        ))));
   }
 }
